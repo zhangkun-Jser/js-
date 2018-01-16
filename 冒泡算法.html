@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    li {
+      float: left;
+      margin-right: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li id="out1">简版</li>
+    <li id="out4">选择排序</li>
+    <li id="out2">冒泡</li>
+    <li id="out3">冒泡升级版</li>
+    <li id="out5">快速排序</li>
+  </ul>
+  <script>
+    let a = [48, 12, 6, 7, 9, 0, 68, -8, 4, 22]
+    // let a = [0, 4, -8, 6, 7, 9, 12, 22, 48, 68]
+    let l = a.length;
+
+    !function test(a) {
+      a = a.concat();
+      let o = 1, b
+      for (let i = 0; i < l; i++) {
+        for (let j = i + 1; j < l; j++) {
+          if (a[i] > a[j]) {
+            b = a[i]
+            a[i] = a[j]
+            a[j] = b
+          }
+          document.querySelector('#out1').innerText += "\n" + "[" + a + "]" + " No." + o
+          o++
+        }
+      }
+    }(a)
+
+    //选择排序
+    !function test3(a) {
+      a = a.concat();
+      let o = 1, b, minIndex
+      for (var i = 0; i < l; i++) {
+        minIndex = i;//记录每次循环的第一个数为该次循环的最小值索引
+        for (var j = i + 1; j < l; j++) {
+          if (a[j] < a[minIndex]) {
+            minIndex = j;//找到每次循环到的最小值，
+          }
+          document.querySelector('#out4').innerText += "\n" + "[" + a + "]" + " No." + o
+          o++
+        }
+        b = a[i];
+        a[i] = a[minIndex];//将找到的最小值放在每次循环的最开始的地方；
+        a[minIndex] = b;
+      }
+    }(a)
+
+    //冒泡算法
+    !function test1(a) {
+      a = a.concat();
+      let o = 1, b
+      for (let i = 0; i < l; i++) {
+        for (let j = i + 1; j < l; j++) {
+          if (a[j] < a[j - 1]) {
+            b = a[j]
+            a[j] = a[j - 1]
+            a[j - 1] = b
+          }
+          document.querySelector('#out2').innerText += "\n" + "[" + a + "]" + " No." + o
+          o++
+        }
+      }
+    }(a)
+
+    //冒泡优化
+    !function test2(a) {
+      a = a.concat();
+      let o = 1, b, flag = 1
+      for (let i = 0; i < l && flag; i++) {
+        flag = 0
+        for (let j = i + 1; j < l; j++) {
+          if (a[j] < a[j - 1]) {
+            b = a[j]
+            a[j] = a[j - 1]
+            a[j - 1] = b
+            flag = 1
+          }
+          document.querySelector('#out3').innerText += "\n" + "[" + a + "]" + " No." + o
+          o++
+        }
+      }
+    }(a)
+
+    //快速排序
+    !function quickSort(arr) {
+      let o=1
+      //如果数组<=1,则直接返回
+      if (arr.length <= 1) { return arr; }
+      var pivotIndex = Math.floor(arr.length / 2);
+      //找基准，并把基准从原数组删除
+      var pivot = arr.splice(pivotIndex, 1)[0];
+      //定义左右数组
+      var left = [];
+      var right = [];
+
+      //比基准小的放在left，比基准大的放在right
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] <= pivot) {
+          left.push(arr[i]);
+        }
+        else {
+          right.push(arr[i]);
+        }
+        document.querySelector('#out5').innerText += "\n" + "[" + arr + "]" + " No." + o
+        o++
+      }
+      //递归
+      return quickSort(left).concat([pivot], quickSort(right));
+    }(a)       
+  </script>
+</body>
+
+</html>
