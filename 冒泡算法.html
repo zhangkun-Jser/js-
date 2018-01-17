@@ -26,7 +26,7 @@
     // let a = [48, 12, 6, 7, 9, 0, 68, -8, 4, 22]
     let a = [0, 4, 6, 7, 9, 12, 22, 99, 48, 68]
     let l = a.length;
-    //交换排序
+    //交换排序(无法优化)
     !function test(a) {
       a = a.concat();
       let o = 1, b
@@ -80,7 +80,7 @@
       }
     }(a)
 
-    //冒泡优化
+    //冒泡算法优化
     !function test2(a) {
       a = a.concat();
       let o = 1, b, flag = 1
