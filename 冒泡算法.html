@@ -23,8 +23,8 @@
     <li id="out5">快速排序</li>
   </ul>
   <script>
-    // let a = [48, 12, 6, 7, 9, 0, 68, -8, 4, 22]
-    let a = [0, 4, 6, 7, 9, 12, 22, 99, 48, 68]
+    let a = [48, 12, 6, 7, 9, 0, 68, -8, 4, 22]
+    // let a = [0, 4, 6, 7, 9, 12, 22, 99, 48, 68]
     let l = a.length;
     //交换排序(无法优化)
     !function test(a) {
@@ -60,7 +60,7 @@
         a[i] = a[minIndex];//将找到的最小值放在每次循环的最开始的地方；
         a[minIndex] = b;
       }
-      console.log(a)
+      // console.log(a)
     }(a)
 
     //冒泡算法
@@ -100,13 +100,15 @@
     }(a)
 
     //快速排序
-    !function quickSort(arr) {
+    function quickSort(arr) {
       let o = 1
       //如果数组<=1,则直接返回
       if (arr.length <= 1) { return arr; }
-      var pivotIndex = Math.floor(arr.length / 2);
+      
       //找基准，并把基准从原数组删除
-      var pivot = arr.splice(pivotIndex, 1)[0];
+      // var pivotIndex = Math.floor(arr.length / 2);
+      // var pivot = arr.splice(pivotIndex, 1)[0];
+      var pivot = arr.pop();
       //定义左右数组
       var left = [];
       var right = [];
@@ -122,9 +124,11 @@
         document.querySelector('#out5').innerText += "\n" + "[" + arr + "]" + " No." + o
         o++
       }
+      console.log(left, right)
       //递归
       return quickSort(left).concat([pivot], quickSort(right));
-    }(a)       
+    }
+    console.log(quickSort(a))
   </script>
 </body>
 
